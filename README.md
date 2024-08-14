@@ -1,3 +1,4 @@
+```
 efivar -l
 |-> check efi shit, there is gotta be lots of things
 lsblk
@@ -94,9 +95,9 @@ passwd *username*
 EDITOR=nano visudo
 |-> find "%wheel" and uncomment that
 |-> create script to bottom
-```
+###
 Defaults rootpw
-```
+###
 
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars/
 ls /sys/firmware/efi/efivars/
@@ -129,16 +130,16 @@ sudo pacman -S linux-headers
 sudo pacman -S nvidia-dkms libglvnd nvidia-utils opencl-nvidia lib32-libglvnd lib32-nvidia-utils lib32-opencl nvidia nvidia-settings
 sudo nano /etc/mkinitcpio.conf
 |-> inside modules
-```
+###
 MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
-```
+###
 sudo nano /boot/loader/enteries/arch.conf
-```
+###
 You should see #options root=PARTUUID=*ID* rw nvidia-drm.modeset=1 
-```
+###
 sudo mkdir /etc/pacman.d/hooks
 sudo nano /etc/pacman.d/hooks/nvidia.hook
-```
+###
 [Trigger]
 Operation=Install
 Operation=Upgrade
@@ -150,7 +151,7 @@ Target=nvidia
 Depends=mkinitcpio
 When=PostTransaction
 Exec=/usr/bin/mkinitcpio -P
-```
+###
 exit
 umount -R /mnt
 reboot
@@ -162,3 +163,4 @@ sudo systemctl enable sddm.service
 reboot
 
 DONE
+```
